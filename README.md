@@ -12,11 +12,11 @@
 - Pas d'utilisation de Pry : franchement, vu les progs qu'on pond, pas encore utile d'avoir une exécution pas à pas & Co...
   
 ### Table of content
-- db/gossip.csv - Fichier de sauvegarde des potins
-- lib/apps/controller.rb - [A COMPLETER]
+- db/gossip.csv - Fichier de sauvegarde des potins au format "author|content"
+- lib/apps/controller.rb - Classe intégrant toute la logique de traitement
 - lib/apps/gossip.rb - [A COMPLETER]
-- lib/apps/router.rb - [A COMPLETER]
-- lib/views/show.rb - Show class managing all display and user prompts related method and mechanics
+- lib/apps/router.rb - Classe dirigeant l'utilisateur vers les différentes options, selon ses choix dans le menu
+- lib/views/show.rb - Classe gérant les interactions (affichages, questions...) avec l'utilisateur
 - README.md - Le charabia que tu es en train de lire... Et jusqu'au bout, en plus... Belle endurance :wink:!  
 
 ### How to

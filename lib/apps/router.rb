@@ -8,15 +8,16 @@ require_relative '../views/show.rb'
 # Router - Class branching the user to the relevant Controllers and/or Views 
 class Router
 
-  #On veut qu'un "Router.new" lancé par app.rb, crée automatique une instance "@controller"
+  # On veut qu'un "Router.new" lancé par app.rb, crée automatique une instance "@controller"
   def initialize
     @controller =  Controller.new
   end 
 
-  #rappelle-toi que l'on fait "Router.new.perform" dans app.rb => après initialize, on définit donc perform.
+  # rappelle-toi que l'on fait "Router.new.perform" dans app.rb => après initialize, on définit donc perform.
   def perform 
     tmp_prompt = []
     exit = false
+    Show.clrscr
     Show.disp("WELCOME TO THE GOSSIP PROJECT")
     while !exit
       choice = Show.display_menu
@@ -28,9 +29,12 @@ class Router
       when 2
         Show.disp("You decided to have a look at our gossip warehouse")
         @controller.index_gossips
+      when 3
+        Show.disp("Yo, Stranger! This feature is not yet implemented. Stay calm and eat a pizza, instead, OK?")
+        Show.pause
       when 4
-        Show.disp("Hope to see you soon!")
-        exit = false
+        Show.disp("Hope to see you (not too) soon, Stranger!")
+        exit = true
       else
         Show.disp("You apparently encountered difficulties typing an adequate choice... Ask your dog or cat for help ;-)")
       end

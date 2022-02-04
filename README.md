@@ -16,7 +16,7 @@
 - lib/apps/controller.rb - [A COMPLETER]
 - lib/apps/gossip.rb - [A COMPLETER]
 - lib/apps/router.rb - [A COMPLETER]
-- lib/views/show.rb - Show class managing all display and user prompts related method and mecanics
+- lib/views/show.rb - Show class managing all display and user prompts related method and mechanics
 - README.md - Le charabia que tu es en train de lire... Et jusqu'au bout, en plus... Belle endurance :wink:!  
 
 ### How to

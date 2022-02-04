@@ -23,7 +23,7 @@
 1. Clone the current repo
 2. Make sur the "Bundle" gem is installed on your (virtual) machine
 3. If so, then launch "bundle" or "bundler" to gather and bind all gems listed in the Gemfile(*)
-4. If all went well, you should now be able to launch the main program by throwing a "ruby tictactoe.rb" at your favorite xTerm :wink:
+4. If all went well, you should now be able to launch the main program by throwing a "ruby app.rb" at your favorite xTerm :wink:
 5. Now, lay back and let this simple Gossip program bring (back?) light and joy into your life!
 
 (*) Despite I'm using a ".gitignore" file, might be you need to delete an existing "Gemfile.lock" beforehand...

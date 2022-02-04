@@ -14,7 +14,7 @@
 ### Table of content
 - db/gossip.csv - Fichier de sauvegarde des potins au format "author|content"
 - lib/apps/controller.rb - Classe intégrant toute la logique de traitement
-- lib/apps/gossip.rb - [A COMPLETER]
+- lib/apps/gossip.rb - Classe de gestion des potins (lecture de tous, ajout d'un et [WIP] effacement d'un potin donné)
 - lib/apps/router.rb - Classe dirigeant l'utilisateur vers les différentes options, selon ses choix dans le menu
 - lib/views/show.rb - Classe gérant les interactions (affichages, questions...) avec l'utilisateur
 - README.md - Le charabia que tu es en train de lire... Et jusqu'au bout, en plus... Belle endurance :wink:!  

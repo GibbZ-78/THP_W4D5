@@ -10,29 +10,47 @@ class Router
 
   # On veut qu'un "Router.new" lancé par app.rb, crée automatique une instance "@controller"
   def initialize
-    @controller =  Controller.new
+    @controller =  Controller.new("db/gossip.csv")
   end 
 
   # rappelle-toi que l'on fait "Router.new.perform" dans app.rb => après initialize, on définit donc perform.
   def perform 
     tmp_prompt = []
+    tmp_gossip_id = 0
+    tmp_route = false
     exit = false
     Show.clrscr
     Show.disp("WELCOME TO THE GOSSIP PROJECT")
     while !exit
       choice = Show.display_menu
       case choice
-      when 1
+      when 1 # CREATE a new gossip
         Show.disp("You chose to store a new gossip. Cool!")
         tmp_prompt = Show.input_gossip
         @controller.create_gossip(tmp_prompt[0], tmp_prompt[1])
-      when 2
+      when 2 # READ all stored gossips
         Show.disp("You decided to have a look at our gossip warehouse")
-        @controller.index_gossips
-      when 3
-        Show.disp("Yo, Stranger! This feature is not yet implemented. Stay calm and eat a pizza, instead, OK?")
-        Show.pause
-      when 4
+        tmp_route = @controller.index_gossips
+      when 3 # UPDATE an existing gossip [Work in progress]
+        Show.disp("Hey, you! The UPDATE feature for our gossip list is still WIP. Keep calm, lay back and eat a pizza instead.")
+      when 4 # DELETE a given gossip
+        Show.disp("Yo, Stranger! This feature is not for lamerz... Be careful with what you do to my gossip list, OK?")
+        Show.disp("")
+        tmp_route = @controller.index_gossips
+        if tmp_route
+          tmp_gossip_id = Show.prompt_for_deletion
+          if @controller.delete_gossip(tmp_gossip_id)
+            Show.disp("Nicely done, Stranger! Looks like gossip ##{tmp_gossip_id} has been deleted. Surely telling unmentionable things about you ;-)")
+            Show.pause
+          else
+            Show.disp("Oooops! Looks like something went wrong... Next time, ask your 3-year-old brother or sister for help, Stranger.")
+            Show.pause
+          end
+        else
+          Show.disp("Looks like the Gossip file is still empty: no mean to delete from it, then... You fool :-D")
+          Show.pause
+        end
+      when 5
         Show.disp("")
         Show.disp("Hope to see you (not too) soon, Stranger!")
         exit = true

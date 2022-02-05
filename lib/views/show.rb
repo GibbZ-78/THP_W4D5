@@ -7,7 +7,7 @@
 # Show - Class branching the user to the relevant Controllers and Views 
 class Show
 
-  # clrscr - Flush the screen using the Unix term comman 'clear' (hence not compatible with all OSs)
+  # clrscr - Flush the screen using the Unix term comman 'clear' (### WARNING: hence not compatible with all OSs)
   def self.clrscr
     system('clear')
   end
@@ -35,16 +35,18 @@ class Show
   def self.display_menu
     Show.clrscr
     Show.disp("")
-    Show.disp("What do you wanna do, today, stranger ?")
-    Show.disp("  1) I wanna add a gossip!")
-    Show.disp("  2) I'd love to browse all existing gossips")
-    Show.disp("  3) I would like to delete a given gossip [Work in progress]")
-    Show.disp("  4) I'm fed up with all this gossip sh** and wanna leave!")
+    Show.disp("What do you wanna do, today, Stranger?")
+    Show.disp("  1) I wanna CREATE a gossip!")
+    Show.disp("  2) I'd love to READ all existing gossips.")
+    Show.disp("  3) I saw a gossip I'd like to UPDATE, please. [WORK IN PROGRESS]")
+    Show.disp("  4) I would like to DELETE a given gossip.")
+    Show.disp("  5) I'm fed up with all this gossip sh** and wanna leave!")
     Show.disp("")
     Show.echo("   > ")
     return gets.chomp.to_i
   end
 
+  # input_gossip - Prompt the user for author and content of a new gossip, then return both in a single array
   def self.input_gossip
     tmp_tab = []
     Show.clrscr
@@ -59,6 +61,7 @@ class Show
     return tmp_tab
   end
 
+  # lis_gossips - Looping display method showing id, author and content of each Gossip of the given array of Gossip objects
   def self.list_gossips(gossip_tab)
     tmp_count = 1
     Show.disp("")
@@ -74,6 +77,15 @@ class Show
     Show.disp("")
     Show.disp("  And THAT was the gossip list: happy, stranger?")
     Show.pause
+  end
+
+  # prompt_for_deletion - Once the gossip list displayed, ask for the 'id' of the Gossip to be deleted
+  def self.prompt_for_deletion
+    tmp_id = ""
+    Show.disp("")
+    Show.disp("To delete one of these gossips you see above, please enter its ID below:")
+    Show.echo("   > ")
+    return gets.chomp.to_i
   end
 
 end

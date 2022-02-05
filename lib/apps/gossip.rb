@@ -15,7 +15,7 @@ class Gossip
     @author = my_author
     @content = my_content
     if new_real_gossip
-      tmp_tab = Gossip.read_all("db/gossip.csv",false)
+      tmp_tab = Gossip.read_all("db/gossip.csv",false) ### TO DO: si how to use Controller @@csv var instead of file name here
       if tmp_tab.nil? 
         @@unique_gossip_counter = 1
       else
@@ -79,6 +79,26 @@ class Gossip
         Show.disp("  > Read #{tmp_line_counter} lines from CSV file and stored them into an array of Gossip objects.")
       end
       return tmp_all_gossips_tab
+    end
+  end
+
+  # suppr_gossip_from_CSV - Capture all lines of CSV file (if exists) in an array. Delete item with given 'id' then overwrite file with the update array
+  def self.suppr_gossip_from_CSV(my_csv_filename, gossip_id)
+    tmp_lines_tab = []
+    tmp_gossip_items_tab = []
+    tmp_block_write = ""
+    if !File.exists?(my_csv_filename)
+      Show.disp("  > File does not exist, sorry. Hence not able to play with it.")
+      return false
+    else
+      tmp_lines_tab = IO.readlines(my_csv_filename)
+      tmp_lines_tab.each do |my_line|
+        tmp_gossip_items_tab = my_line.split("|")
+        if tmp_gossip_items_tab[0].to_i != gossip_id
+          tmp_block_write += "#{tmp_gossip_items_tab[0].chomp}|#{tmp_gossip_items_tab[1].chomp}|#{tmp_gossip_items_tab[2].chomp}\n"
+        end
+      end
+      File.write(my_csv_filename,tmp_block_write)
     end
   end
 

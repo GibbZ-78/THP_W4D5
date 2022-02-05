@@ -39,7 +39,7 @@ class Show
     Show.disp("  1) I wanna add a gossip!")
     Show.disp("  2) I'd love to browse all existing gossips")
     Show.disp("  3) I would like to delete a given gossip [Work in progress]")
-    Show.disp("  4) I'm fed up with this gossip sh** and wanna leave!")
+    Show.disp("  4) I'm fed up with all this gossip sh** and wanna leave!")
     Show.disp("")
     Show.echo("   > ")
     return gets.chomp.to_i
@@ -66,6 +66,7 @@ class Show
     Show.disp("")
     gossip_tab.each do |item|
       Show.disp("  > Gossip ##{tmp_count}")
+      Show.disp("    - ID : #{item.id}")
       Show.disp("    - Author : #{item.author}")
       Show.disp("    - Content : #{item.content}")
       tmp_count += 1

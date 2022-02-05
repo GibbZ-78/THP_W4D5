@@ -33,6 +33,7 @@ class Router
         Show.disp("Yo, Stranger! This feature is not yet implemented. Stay calm and eat a pizza, instead, OK?")
         Show.pause
       when 4
+        Show.disp("")
         Show.disp("Hope to see you (not too) soon, Stranger!")
         exit = true
       else

@@ -15,17 +15,17 @@ class Controller
 
   # create_gossip - Method instantiating a new gossip object accessible by the Controller
   def create_gossip(the_author,the_gossip)
-    my_gossip = Gossip.new(the_author,the_gossip)
+    my_gossip = Gossip.new(the_author,the_gossip,0,true)
     my_gossip.save_to_csv("db/gossip.csv")
   end
 
   # index_gossip - Method listing all existing gossips
   def index_gossips
-    tmp_index_tab = Gossip.read_all("db/gossip.csv")
+    tmp_index_tab = Gossip.read_all("db/gossip.csv",true)
     if !tmp_index_tab.nil?
       Show.list_gossips(tmp_index_tab)
     else
-      Show.disp("  > Sadly, the related gossip file is... Still empty or corrupted. Try adding some new gossips, Stranger!")
+      Show.disp("  > Sadly, the related gossip file is... Still empty. Try adding some new gossips, Stranger!")
       Show.pause
     end
   end
